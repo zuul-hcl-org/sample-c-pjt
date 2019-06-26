@@ -15,7 +15,7 @@
     - name: Clone git repo
       git:
         repo: https://github.com/zuul-hcl-org/sample-c-pjt.git
-        dest: ~/work/
+        dest: ~/work/sample-c-pjt
       when: clean_output is succeeded
       
     - name: Build sample project
