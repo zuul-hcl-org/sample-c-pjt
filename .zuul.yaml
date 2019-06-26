@@ -25,7 +25,7 @@
 - project:
 #    vars:
 #      myname: "juhi"
-    check_nafta:
+    check_nafta_cpjt:
       jobs:
         - democbuildjob:
             host-vars: 
