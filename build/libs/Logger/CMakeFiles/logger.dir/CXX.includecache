@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/humble_d/Projects/Sandbox/sample_cmake/libs/Logger/src/logger_util.cpp
+/home/ec2-user/c-pjt/sample_cmake/libs/Logger/src/logger_util.cpp
 iostream
 -
 string

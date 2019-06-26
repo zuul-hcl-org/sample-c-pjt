@@ -1,2 +1,2 @@
-/usr/bin/ar qc liblogger.a  CMakeFiles/logger.dir/src/logger_util.cpp.o
-/usr/bin/ranlib liblogger.a
+/home/linuxbrew/.linuxbrew/bin/ar qc liblogger.a  CMakeFiles/logger.dir/src/logger_util.cpp.o
+/home/linuxbrew/.linuxbrew/bin/ranlib liblogger.a

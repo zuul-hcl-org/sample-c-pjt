@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -18,7 +18,7 @@ string
 
 .././src/game_engine.h
 
-/home/humble_d/Projects/Sandbox/sample_cmake/src/game_engine.cpp
+/home/ec2-user/c-pjt/sample_cmake/src/game_engine.cpp
 iostream
 -
 game_engine.h
@@ -28,13 +28,13 @@ Logger/logger_util.h
 Randomize/randomize_util.h
 -
 
-/home/humble_d/Projects/Sandbox/sample_cmake/src/game_interface.cpp
+/home/ec2-user/c-pjt/sample_cmake/src/game_interface.cpp
 game_engine.h
 -
 sample_cmake/game_interface.h
 -
 
-/home/humble_d/Projects/Sandbox/sample_cmake/src/main.cpp
+/home/ec2-user/c-pjt/sample_cmake/src/main.cpp
 sample_cmake/game_interface.h
 -
 
