@@ -1,1 +1,36 @@
-
+- hosts: all
+  tasks:
+    - debug:
+        msg: "running for gameof life demo"
+#    - debug: 
+#         msg: "{{ emea_jfrog }}"
+#    - debug:
+#        msg: "{{ nafta_jfrog }}"
+        
+    - name: "Deleted the workspace dir before build"
+      shell: |
+            rm -rf ~/work
+      register: clean_output
+      
+    - name: Clone git repo
+      git:
+        repo: https://github.com/zuul-hcl-org/sample-c-pjt.git
+        dest: ~/work/
+      when: clean_output is succeeded
+      
+    - name: Build sample project
+      shell: |
+            mvn -f ~/work/pom.xml clean install
+      register: output
+      
+    - name: Push artifacts to jfrog repository
+      uri:
+        url: "{{ jfrog }}/artifactory/generic-local/gameoflife.war"
+        #when: zuul_location in emea
+        validate_certs: no
+        method: PUT
+        headers:
+          X-JFrog-Art-Api: "{{ jfrog_api_token }}"
+        src: ~/work/gameoflife-web/target/gameoflife.war
+        status_code: 201
+        remote_src: yes
