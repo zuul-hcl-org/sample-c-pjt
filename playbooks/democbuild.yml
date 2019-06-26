@@ -20,17 +20,23 @@
       
     - name: Build sample project
       shell: |
-            mvn -f ~/work/pom.xml clean install
-      register: output
+            cd ~/work/sample-c-pjt
+            rm -rf build
+            mkdir build
+            cd build
+            cmake ..
+            make            
+      register: build_status
       
     - name: Push artifacts to jfrog repository
       uri:
-        url: "{{ jfrog }}/artifactory/generic-local/gameoflife.war"
+        url: "{{ jfrog }}/artifactory/generic-local/binary"
         #when: zuul_location in emea
         validate_certs: no
         method: PUT
         headers:
           X-JFrog-Art-Api: "{{ jfrog_api_token }}"
-        src: ~/work/gameoflife-web/target/gameoflife.war
+        src: ~/work/sample-c-pjt/build/binary
         status_code: 201
         remote_src: yes
+      when: build_status is succeeded
