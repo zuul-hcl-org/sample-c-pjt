@@ -1,1 +1,75 @@
+- nodeset:
+    name: emea-node
+    nodes:
+      - name: node
+        label: ubuntu-bionic
+         
+- nodeset:
+    name: nafta-node
+    nodes:
+      - name: node2
+        label: centos76
 
+        
+- nodeset:
+    name: gate-node
+    nodes:
+      - name: gate
+        label: centos76 
+
+- job:
+    name: democbuildjob
+    run: playbooks/democbuild.yaml
+    parent: base
+
+- job:
+    name: checklabel_emea
+    run: playbooks/checklabel_emea.yaml
+    parent: base
+    
+- job:
+    name: checklabel_nafta
+    run: playbooks/checklabel_nafta.yaml
+    parent: base
+    
+- job:
+    name: helloworldjob
+    run: playbooks/helloworld.yaml
+    parent: base    
+
+
+- project:
+#    vars:
+#      myname: "juhi"
+    checklabel_emea:
+      jobs:
+       - checklabel_emea:
+           nodeset: emea-node
+    checklabel_nafta:
+      jobs:
+       - checklabel_nafta:
+           nodeset: nafta-node
+    check_emea:
+      jobs:
+        - demomavenbuildjob:
+            host-vars:
+              node:
+                jfrog: "http://172.31.27.120:9082"
+                jfrog_api_token: "AKCp5dK4z1yg9pvS3QoLtzwpMUbTrN5edVNpyv9pHnThHBze7PoFGTEHMeJhcaT6tRXR8bt7Q"
+            nodeset: emea-node
+    check_nafta:
+      jobs:
+        - democbuild:
+            host-vars: 
+              node2:
+                jfrog: "http://172.31.20.175:9082"
+                jfrog_api_token: "AKCp5dK4wtavETSJAiGFMbVRpe7YeGa8WdPzNmzqtvukpUnPdpschfY1RtrZXadQCpSHpAm4d"
+            nodeset: nafta-node
+    gate:
+      jobs:
+        - demomavenbuildjob:
+            host-vars: 
+              node2:
+                jfrog: "http://172.31.20.175:9082"
+                jfrog_api_token: "AKCp5dK4wtavETSJAiGFMbVRpe7YeGa8WdPzNmzqtvukpUnPdpschfY1RtrZXadQCpSHpAm4d"
+            nodeset: nafta-node
