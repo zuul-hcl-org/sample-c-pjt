@@ -19,7 +19,7 @@
 
 - job:
     name: democbuildjob
-    run: playbooks/democbuild.yaml
+    run: playbooks/democbuild.yml
     parent: base
 
 - project:
@@ -27,7 +27,7 @@
 #      myname: "juhi"
     check_nafta:
       jobs:
-        - democbuild:
+        - democbuildjob:
             host-vars: 
               node2:
                 jfrog: "http://172.31.20.175:9082"
