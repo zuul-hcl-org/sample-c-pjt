@@ -2,13 +2,13 @@
     name: emea-node
     nodes:
       - name: node
-        label: ubuntu-bionic
+        label: centos1
          
 - nodeset:
     name: nafta-node
     nodes:
       - name: node2
-        label: centos76
+        label: centos2
 
         
 - nodeset:
