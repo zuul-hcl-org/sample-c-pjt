@@ -30,7 +30,7 @@
       
     - name: Push artifacts to jfrog repository
       uri:
-        url: "{{ jfrog }}/artifactory/generic-local/binary"
+        url: "{{ jfrog }}/artifactory/generic-local/binary_{{ zuul.build }}"
         #when: zuul_location in emea
         validate_certs: no
         method: PUT
