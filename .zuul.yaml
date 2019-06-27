@@ -11,11 +11,11 @@
         label: centos2
 
         
-- nodeset:
-    name: gate-node
-    nodes:
-      - name: gate
-        label: centos76 
+#- nodeset:
+#    name: gate-node
+#    nodes:
+#     - name: gate
+#        label: centos76 
 
 - job:
     name: democbuildjob
