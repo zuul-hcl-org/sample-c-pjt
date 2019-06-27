@@ -28,6 +28,9 @@
     check_nafta_cpjt:
       jobs:
         - democbuildjob:
+            irrelevant-files:
+              - .zuul.yaml
+              - playbooks
           #  host-vars: 
           #    node2:
         #        jfrog: "http://172.31.20.175:9082"
